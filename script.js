@@ -42,11 +42,8 @@ function endPlay() {
     let speed = Math.round((wordCount / totalTime) * 60);
     let finalMessage = "You typed at " + speed + " words per minute.";
 
-    if (str != message.innerText) {
-        finalMessage += "<br>There were some errors in the wording";
-    }
-
-        message.innerHTML = finalMessage;
+    finalMessage += "<br>" + compareWords(message.innerText, str);
+    message.innerHTML = finalMessage;
 
     //count words
     //divide by total time words per minute
@@ -56,4 +53,17 @@ function endPlay() {
 function wordCounter(strWords) {
     let response = strWords.split(" ").length;
     return response;
+}
+
+function compareWords(str1, str2) {
+    let words1 = str1.split(" ");
+    let words2 = str2.split(" ");
+    let count = 0;
+
+    words1.forEach(function(item, index) {
+        if (item == words2[index]) {
+            count++;
+        }
+    })
+    return (count + " correct out of " + words1.length + " words");
 }
