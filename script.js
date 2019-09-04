@@ -41,7 +41,23 @@ function endPlay() {
 
     let str = playText.value;
 
+    let wordCount = wordCounter(str);
+
+    let speed = Math.round((wordCount/totalTime)*60);
+
+    console.log(speed);
+
+    let finalMessage = "You typed at " + speed + " words per minute.";
+    message.innerHTML = finalMessage;
+
+
     //count words
     //divide by total time words per minute
     //output final message to player
+}
+
+function wordCounter(strWords) {
+    let response = strWords.split(" ").length;
+    console.log(response);
+    return response;
 }
