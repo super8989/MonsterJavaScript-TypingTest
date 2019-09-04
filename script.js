@@ -11,6 +11,10 @@ button.addEventListener("click", function() {
     if (this.innerText == "Start") {
         playText.disabled = false;
         playGame();
+    } else if (this.innerText == "Done") {
+        playText.disabled = true;
+        button.innerText = "Start";
+        endPlay();
     }
 })
 
@@ -26,3 +30,18 @@ function playGame() {
 
     console.log(randomNum);
 } 
+
+
+function endPlay() {
+    let date = new Date();
+    endTime = date.getTime();
+    let totalTime = ((endTime-startTime)/1000);
+
+    console.log(totalTime);
+
+    let str = playText.value;
+
+    //count words
+    //divide by total time words per minute
+    //output final message to player
+}
